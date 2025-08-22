@@ -1,37 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Creative Agency Landing Page
+
+This is a modern landing page built with [Next.js](https://nextjs.org) and React, designed for a creative agency or company. The project features a clean, responsive design and highlights the agency's services, featured project, and brand identity.
+
+## Features & App Structure
+
+- **Navbar**: Simple navigation bar with branding and links to Home, Work, About, and Contact Us.
+- **Hero Section**: Eye-catching headline, short description, and call-to-action button to showcase the agency's value proposition.
+- **Services**: Highlights three main services—Branding, Web & App Development, and SEO—each with a custom icon and description.
+- **Featured Project**: Showcases a sample project (#VegFest) with project stats, description, and a call-to-action button.
+
+## File Structure
+
+- `src/app/page.tsx`: Main page layout, imports and arranges all sections.
+- `src/components/Navbar.tsx`: Navigation bar component.
+- `src/components/Hero.tsx`: Hero/landing section component.
+- `src/components/Services.tsx`: Services listing component.
+- `src/components/Project.tsx`: Featured project showcase component.
 
 ## Getting Started
 
-First, run the development server:
+To run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Update content and branding in the respective components under `src/components/`.
+- Add or modify services and projects as needed.
+- Styles use Tailwind CSS utility classes for easy customization.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Deploy easily to [Vercel](https://vercel.com/) or any platform supporting Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# landing-page-company-client
+Made with ❤️ using Next.js and React.
