@@ -1,60 +1,63 @@
 "use client";
-import React from "react";
+import React, { useId } from "react";
 
 interface WaveBackgroundProps {
   opacity?: number;
   variant?: "default" | "light" | "dark";
 }
 
-const WaveBackground = ({
-  opacity = 0.2,
-  variant = "default",
-}: WaveBackgroundProps) => {
+const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundProps) => {
+  const uid = useId();
+
   const getGradientColors = () => {
     switch (variant) {
       case "light":
         return {
           gradient1: {
-            stop1: { color: "#9CA3AF", opacity: 0.6 },
-            stop2: { color: "#6B7280", opacity: 0.4 },
-            stop3: { color: "#4B5563", opacity: 0.3 },
+            stop1: { color: "#000000", opacity: 0.15 },
+            stop2: { color: "#1F2937", opacity: 0.1 },
+            stop3: { color: "#374151", opacity: 0.05 },
           },
           gradient2: {
-            stop1: { color: "#10B981", opacity: 0.2 },
-            stop2: { color: "#059669", opacity: 0.15 },
-            stop3: { color: "#047857", opacity: 0.1 },
+            stop1: { color: "#000000", opacity: 0.2 },
+            stop2: { color: "#111827", opacity: 0.15 },
+            stop3: { color: "#1F2937", opacity: 0.1 },
           },
         };
       case "dark":
         return {
+          // Deeper charcoal base layer for shape
           gradient1: {
-            stop1: { color: "#4B5563", opacity: 0.9 },
-            stop2: { color: "#374151", opacity: 0.7 },
-            stop3: { color: "#1F2937", opacity: 0.5 },
+            stop1: { color: "#0B0F19", opacity: 0.85 }, // near-black blue
+            stop2: { color: "#111827", opacity: 0.6 },  // slate-900
+            stop3: { color: "#1F2937", opacity: 0.45 }, // slate-800
           },
+          // Emerald accent layer for visibility on black
           gradient2: {
-            stop1: { color: "#10B981", opacity: 0.4 },
-            stop2: { color: "#059669", opacity: 0.3 },
-            stop3: { color: "#047857", opacity: 0.2 },
+            stop1: { color: "#22C55E", opacity: 0.35 }, // emerald-500
+            stop2: { color: "#16A34A", opacity: 0.25 }, // emerald-600
+            stop3: { color: "#064E3B", opacity: 0.18 }, // emerald-900
           },
         };
       default:
         return {
           gradient1: {
-            stop1: { color: "#6B7280", opacity: 0.8 },
-            stop2: { color: "#4B5563", opacity: 0.6 },
-            stop3: { color: "#374151", opacity: 0.4 },
+            stop1: { color: "#000000", opacity: 0.4 },
+            stop2: { color: "#111827", opacity: 0.3 },
+            stop3: { color: "#1F2937", opacity: 0.2 },
           },
           gradient2: {
-            stop1: { color: "#10B981", opacity: 0.3 },
-            stop2: { color: "#059669", opacity: 0.2 },
-            stop3: { color: "#047857", opacity: 0.1 },
+            stop1: { color: "#000000", opacity: 0.3 },
+            stop2: { color: "#0F172A", opacity: 0.2 },
+            stop3: { color: "#1E293B", opacity: 0.1 },
           },
         };
     }
   };
 
   const colors = getGradientColors();
+  const grad1Id = `waveGradient1-${variant}-${uid}`;
+  const grad2Id = `waveGradient2-${variant}-${uid}`;
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -65,15 +68,12 @@ const WaveBackground = ({
           className="absolute inset-0 w-full h-full"
           style={{ opacity }}
           preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          focusable="false"
+          role="presentation"
         >
           <defs>
-            <linearGradient
-              id={`waveGradient1-${variant}`}
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
+            <linearGradient id={grad1Id} x1="0%" y1="0%" x2="100%" y2="0%">
               <stop
                 offset="0%"
                 style={{
@@ -96,13 +96,7 @@ const WaveBackground = ({
                 }}
               />
             </linearGradient>
-            <linearGradient
-              id={`waveGradient2-${variant}`}
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
+            <linearGradient id={grad2Id} x1="0%" y1="0%" x2="100%" y2="0%">
               <stop
                 offset="0%"
                 style={{
@@ -127,58 +121,114 @@ const WaveBackground = ({
             </linearGradient>
           </defs>
 
-          {/* First Wave - Moving horizontally */}
-          <path
-            d="M0,200 C300,100 600,300 900,200 C1000,150 1100,250 1200,200 L1200,800 L0,800 Z"
-            fill={`url(#waveGradient1-${variant})`}
-            className="animate-pulse"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; 50,0; 0,0"
-              dur="8s"
-              repeatCount="indefinite"
+          {/* Layer 1 - Seamless horizontal scroll */}
+          <g className="will-change-transform" style={{ animation: "moveLeft 40s linear infinite" }}>
+            <path
+              d="M0,320 C300,260 900,380 1200,320 L1200,800 L0,800 Z"
+              fill={`url(#${grad1Id})`}
             />
-          </path>
+            <g transform="translate(1200,0)">
+              <path
+                d="M0,320 C300,260 900,380 1200,320 L1200,800 L0,800 Z"
+                fill={`url(#${grad1Id})`}
+              />
+            </g>
+          </g>
 
-          {/* Second Wave - Different speed */}
-          <path
-            d="M0,350 C200,250 400,450 600,350 C800,250 1000,450 1200,350 L1200,800 L0,800 Z"
-            fill={`url(#waveGradient1-${variant})`}
-            opacity="0.7"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; -30,10; 0,0"
-              dur="12s"
-              repeatCount="indefinite"
+          {/* Layer 2 - Slower parallax */}
+          <g className="will-change-transform" style={{ animation: "moveLeft 60s linear infinite", opacity: 0.85 }}>
+            <path
+              d="M0,420 C250,360 950,480 1200,420 L1200,800 L0,800 Z"
+              fill={`url(#${grad1Id})`}
             />
-          </path>
+            <g transform="translate(1200,0)">
+              <path
+                d="M0,420 C250,360 950,480 1200,420 L1200,800 L0,800 Z"
+                fill={`url(#${grad1Id})`}
+              />
+            </g>
+          </g>
 
-          {/* Third Wave - Green accent */}
-          <path
-            d="M0,500 C400,400 800,600 1200,500 L1200,800 L0,800 Z"
-            fill={`url(#waveGradient2-${variant})`}
-            opacity="0.6"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              values="0,0; 40,-20; 0,0"
-              dur="15s"
-              repeatCount="indefinite"
+          {/* Layer 3 - Long wavelength, deepest */}
+          <g className="will-change-transform" style={{ animation: "moveLeft 90s linear infinite", opacity: 0.6 }}>
+            <path
+              d="M0,560 C400,520 800,600 1200,560 L1200,800 L0,800 Z"
+              fill={`url(#${grad2Id})`}
             />
-          </path>
+            <g transform="translate(1200,0)">
+              <path
+                d="M0,560 C400,520 800,600 1200,560 L1200,800 L0,800 Z"
+                fill={`url(#${grad2Id})`}
+              />
+            </g>
+          </g>
         </svg>
       </div>
 
-      {/* Floating wave overlays with CSS animations */}
+  {/* Additional flowing overlays for smoother effect */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-0 w-full h-96 bg-gradient-to-r from-gray-600/10 via-green-500/5 to-gray-600/10 transform rotate-2 scale-150 animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-0 w-full h-80 bg-gradient-to-l from-gray-700/8 via-green-600/4 to-gray-700/8 transform -rotate-1 scale-110 animate-pulse"></div>
+        <div
+      className="absolute top-1/4 left-0 w-[150%] h-32 bg-gradient-to-r from-transparent via-white/7 to-transparent transform rotate-1"
+          style={{
+            animation: "wave-flow-1 18s ease-in-out infinite",
+            borderRadius: "50% 50% 0 0",
+          }}
+        ></div>
+        <div
+      className="absolute top-1/2 right-0 w-[140%] h-24 bg-gradient-to-l from-transparent via-white/6 to-transparent transform -rotate-1"
+          style={{
+            animation: "wave-flow-2 22s ease-in-out infinite",
+            borderRadius: "0 0 50% 50%",
+          }}
+        ></div>
+        <div
+      className="absolute bottom-1/4 left-0 w-[160%] h-28 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent transform rotate-0.5"
+          style={{
+            animation: "wave-flow-3 26s ease-in-out infinite",
+            borderRadius: "50%",
+          }}
+        ></div>
       </div>
+
+      <style jsx>{`
+        @keyframes wave-flow-1 {
+          0%, 100% {
+            transform: translateX(-30%) rotate(1deg) scaleX(1);
+          }
+          33% {
+            transform: translateX(10%) rotate(1.5deg) scaleX(1.1);
+          }
+          66% {
+            transform: translateX(30%) rotate(0.5deg) scaleX(0.9);
+          }
+        }
+        
+        @keyframes wave-flow-2 {
+          0%, 100% {
+            transform: translateX(30%) rotate(-1deg) scaleY(1);
+          }
+          50% {
+            transform: translateX(-30%) rotate(-1.5deg) scaleY(1.2);
+          }
+        }
+        
+        @keyframes wave-flow-3 {
+          0%, 100% {
+            transform: translateX(-40%) rotate(0.5deg) scale(1);
+          }
+          25% {
+            transform: translateX(-10%) rotate(1deg) scale(1.1);
+          }
+          75% {
+            transform: translateX(40%) rotate(0deg) scale(0.95);
+          }
+        }
+
+        @keyframes moveLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-1200px); }
+        }
+      `}</style>
     </div>
   );
 };

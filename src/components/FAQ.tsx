@@ -66,26 +66,26 @@ const FAQ = () => {
   const skillTags = ["Product Design", "Brand Identity Design", "Branding"];
 
   return (
-    <section className="w-full py-20 px-8 bg-white relative overflow-hidden">
+    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
       {/* Wave Background */}
-      <WaveBackground opacity={0.1} variant="light" />
+  <WaveBackground opacity={0.15} variant="dark" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left side - Header and Image */}
           <div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
               Answers
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-300 mb-8">
               Find answers to common questions about my design process, services
               etc…
             </p>
 
             {/* Image placeholder */}
-            <div className="w-full h-64 bg-gray-200 rounded-2xl overflow-hidden mb-8">
-              <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                <span className="text-gray-600 text-lg">Design Image</span>
+            <div className="w-full h-64 bg-gray-900 rounded-2xl overflow-hidden mb-8">
+              <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <span className="text-gray-400 text-lg">Design Image</span>
               </div>
             </div>
 
@@ -94,14 +94,14 @@ const FAQ = () => {
               {skillTags.map((skill, index) => (
                 <span
                   key={index}
-                  className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700"
+                  className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-200"
                 >
                   {skill}
                 </span>
               ))}
             </div>
 
-            <button className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">
+            <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition">
               Book a Free Call
             </button>
           </div>
@@ -111,25 +111,25 @@ const FAQ = () => {
             {faqItems.map((item, index) => (
               <div
                 key={index}
-                className="border border-gray-200 rounded-lg overflow-hidden"
+                className="border border-white/10 bg-white/5 backdrop-blur rounded-lg overflow-hidden"
               >
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition"
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/10 transition"
                 >
-                  <span className="font-medium text-black pr-4">
+                  <span className="font-medium text-white pr-4">
                     {item.question}
                   </span>
                   {openItems.includes(index) ? (
-                    <FaMinus className="w-4 h-4 text-gray-600 flex-shrink-0" />
+                    <FaMinus className="w-4 h-4 text-gray-300 flex-shrink-0" />
                   ) : (
-                    <FaPlus className="w-4 h-4 text-gray-600 flex-shrink-0" />
+                    <FaPlus className="w-4 h-4 text-gray-300 flex-shrink-0" />
                   )}
                 </button>
 
                 {openItems.includes(index) && (
                   <div className="px-6 pb-4">
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed">
                       {item.answer}
                     </p>
                   </div>

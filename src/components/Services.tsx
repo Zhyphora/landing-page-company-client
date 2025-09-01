@@ -34,18 +34,18 @@ const Services = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 bg-white relative overflow-hidden">
+    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
       {/* Wave Background */}
-      <WaveBackground opacity={0.1} variant="light" />
+      <WaveBackground opacity={0.15} variant="dark" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left side - Services content */}
           <div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-black">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
               Services
             </h2>
-            <p className="text-lg text-gray-600 mb-12">
+            <p className="text-lg text-gray-300 mb-12">
               Helping businesses standout with brand identity packaging that
               captivates and converts effectively.
             </p>
@@ -55,7 +55,7 @@ const Services = () => {
               {skillTags.map((skill, index) => (
                 <span
                   key={index}
-                  className="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700"
+                  className="bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-gray-200"
                 >
                   {skill}
                 </span>
@@ -67,7 +67,7 @@ const Services = () => {
               <button className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">
                 Book a Free Call
               </button>
-              <button className="border border-black px-8 py-3 rounded-full text-black hover:bg-black hover:text-white transition font-medium">
+              <button className="border border-white px-8 py-3 rounded-full text-white hover:bg-white hover:text-black transition font-medium">
                 See Projects
               </button>
             </div>
@@ -76,10 +76,10 @@ const Services = () => {
             <div className="space-y-8">
               {services.map((service, index) => (
                 <div key={index} className="space-y-3">
-                  <h3 className="text-2xl font-bold text-black">
+                  <h3 className="text-2xl font-bold text-white">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -90,18 +90,18 @@ const Services = () => {
           {/* Right side - Service image */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="w-80 h-96 bg-gray-200 rounded-2xl overflow-hidden">
+              <div className="w-80 h-96 bg-gray-900 rounded-2xl overflow-hidden">
                 {/* Simulating product/bottle image from screenshot */}
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-500 relative flex items-center justify-center">
+                <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 relative flex items-center justify-center">
                   {/* Bottle silhouette */}
                   <div className="relative">
-                    <div className="w-16 h-48 bg-gray-700 rounded-t-full rounded-b-lg mx-auto"></div>
-                    <div className="w-12 h-8 bg-gray-600 rounded-t-lg mx-auto -mt-2"></div>
-                    <div className="w-8 h-4 bg-gray-800 rounded-lg mx-auto -mt-1"></div>
+                    <div className="w-16 h-48 bg-gray-600 rounded-t-full rounded-b-lg mx-auto"></div>
+                    <div className="w-12 h-8 bg-gray-500 rounded-t-lg mx-auto -mt-2"></div>
+                    <div className="w-8 h-4 bg-gray-700 rounded-lg mx-auto -mt-1"></div>
                   </div>
                   {/* Background elements */}
-                  <div className="absolute top-1/4 right-1/4 w-12 h-12 bg-gray-400 rounded-full opacity-30"></div>
-                  <div className="absolute bottom-1/4 left-1/4 w-8 h-16 bg-gray-600 rounded opacity-20"></div>
+                  <div className="absolute top-1/4 right-1/4 w-12 h-12 bg-gray-700 rounded-full opacity-30"></div>
+                  <div className="absolute bottom-1/4 left-1/4 w-8 h-16 bg-gray-700 rounded opacity-20"></div>
                 </div>
               </div>
             </div>

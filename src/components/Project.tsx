@@ -51,9 +51,9 @@ const Project = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 bg-white relative overflow-hidden">
+    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
       {/* Wave Background */}
-      <WaveBackground opacity={0.1} variant="light" />
+      <WaveBackground opacity={0.15} variant="dark" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Projects Grid - 3x3 layout */}
@@ -61,15 +61,15 @@ const Project = () => {
           {projects.map((project, index) => (
             <div key={index} className="group cursor-pointer">
               {/* Project Card */}
-              <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden group-hover:scale-[1.02] transition-transform duration-300">
+              <div className="aspect-square bg-white/5 backdrop-blur rounded-lg overflow-hidden group-hover:scale-[1.02] transition-transform duration-300 border border-white/10">
                 <div
                   className={`w-full h-full ${project.bgColor} relative flex items-center justify-center`}
                 >
                   {/* Placeholder content based on project type */}
-                  <div className="text-gray-500 text-center">
+                  <div className="text-gray-400 text-center">
                     {index === 0 && (
-                      <div className="w-16 h-20 bg-white rounded border-2 border-gray-300 flex items-center justify-center">
-                        <div className="w-8 h-12 bg-gray-300 rounded"></div>
+                      <div className="w-16 h-20 bg-gray-800 rounded border-2 border-white/10 flex items-center justify-center">
+                        <div className="w-8 h-12 bg-gray-600 rounded"></div>
                       </div>
                     )}
                     {index === 1 && (
@@ -77,16 +77,16 @@ const Project = () => {
                     )}
                     {index === 2 && (
                       <div className="flex items-center">
-                        <div className="w-8 h-12 bg-gray-400 rounded-l-full"></div>
-                        <div className="w-4 h-8 bg-gray-500"></div>
+                        <div className="w-8 h-12 bg-gray-600 rounded-l-full"></div>
+                        <div className="w-4 h-8 bg-gray-700"></div>
                       </div>
                     )}
                     {index === 3 && (
                       <div className="grid grid-cols-2 gap-2">
-                        <div className="w-6 h-6 bg-gray-400 rounded"></div>
-                        <div className="w-6 h-6 bg-gray-500 rounded"></div>
-                        <div className="w-6 h-6 bg-gray-500 rounded"></div>
-                        <div className="w-6 h-6 bg-gray-400 rounded"></div>
+                        <div className="w-6 h-6 bg-gray-700 rounded"></div>
+                        <div className="w-6 h-6 bg-gray-600 rounded"></div>
+                        <div className="w-6 h-6 bg-gray-600 rounded"></div>
+                        <div className="w-6 h-6 bg-gray-700 rounded"></div>
                       </div>
                     )}
                     {index === 4 && (
@@ -94,26 +94,26 @@ const Project = () => {
                     )}
                     {index === 5 && (
                       <div className="space-y-2">
-                        <div className="w-16 h-2 bg-gray-400 rounded"></div>
-                        <div className="w-12 h-2 bg-gray-500 rounded"></div>
-                        <div className="w-14 h-2 bg-gray-400 rounded"></div>
+                        <div className="w-16 h-2 bg-gray-700 rounded"></div>
+                        <div className="w-12 h-2 bg-gray-600 rounded"></div>
+                        <div className="w-14 h-2 bg-gray-700 rounded"></div>
                       </div>
                     )}
                     {index === 6 && (
                       <div className="flex space-x-2">
-                        <div className="w-4 h-4 bg-gray-500 rounded-full"></div>
                         <div className="w-4 h-4 bg-gray-600 rounded-full"></div>
-                        <div className="w-4 h-4 bg-gray-500 rounded-full"></div>
+                        <div className="w-4 h-4 bg-gray-700 rounded-full"></div>
+                        <div className="w-4 h-4 bg-gray-600 rounded-full"></div>
                       </div>
                     )}
                     {index === 7 && (
-                      <div className="w-12 h-16 bg-gray-500 rounded-lg flex items-end">
-                        <div className="w-full h-8 bg-gray-600 rounded-b-lg"></div>
+                      <div className="w-12 h-16 bg-gray-600 rounded-lg flex items-end">
+                        <div className="w-full h-8 bg-gray-700 rounded-b-lg"></div>
                       </div>
                     )}
                     {index === 8 && (
-                      <div className="w-12 h-12 bg-gray-500 rounded-full relative">
-                        <div className="absolute top-2 right-2 w-4 h-4 bg-gray-300 rounded-full"></div>
+                      <div className="w-12 h-12 bg-gray-600 rounded-full relative">
+                        <div className="absolute top-2 right-2 w-4 h-4 bg-gray-400 rounded-full"></div>
                       </div>
                     )}
                   </div>
@@ -122,8 +122,8 @@ const Project = () => {
 
               {/* Project link - minimalist */}
               <div className="mt-3 text-center">
-                <button className="text-gray-600 hover:text-black transition text-sm font-medium">
-                  View Casestudy →
+                <button className="text-gray-300 hover:text-white transition text-sm font-medium">
+                  View Case Study →
                 </button>
               </div>
             </div>
@@ -132,7 +132,7 @@ const Project = () => {
 
         {/* Bottom action */}
         <div className="text-center">
-          <button className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">
+          <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition">
             Book a Free Call
           </button>
         </div>
