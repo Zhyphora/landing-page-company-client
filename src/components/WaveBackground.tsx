@@ -4,9 +4,22 @@ import React, { useId } from "react";
 interface WaveBackgroundProps {
   opacity?: number;
   variant?: "default" | "light" | "dark";
+  direction?: "left" | "right"; // scroll direction
+  speed?: number; // seconds for the front layer (lower = faster)
+  tiltDeg?: number; // rotate waves (deg)
+  amplitude?: number; // scaleY factor for wave height
+  offsetY?: number; // vertical offset (px)
 }
 
-const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundProps) => {
+const WaveBackground = ({
+  opacity = 0.3,
+  variant = "default",
+  direction = "left",
+  speed = 40,
+  tiltDeg = 0,
+  amplitude = 1,
+  offsetY = 0,
+}: WaveBackgroundProps) => {
   const uid = useId();
 
   const getGradientColors = () => {
@@ -26,17 +39,15 @@ const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundPr
         };
       case "dark":
         return {
-          // Deeper charcoal base layer for shape
           gradient1: {
-            stop1: { color: "#0B0F19", opacity: 0.85 }, // near-black blue
-            stop2: { color: "#111827", opacity: 0.6 },  // slate-900
-            stop3: { color: "#1F2937", opacity: 0.45 }, // slate-800
+            stop1: { color: "#0B0F19", opacity: 0.85 },
+            stop2: { color: "#111827", opacity: 0.6 },
+            stop3: { color: "#1F2937", opacity: 0.45 },
           },
-          // Emerald accent layer for visibility on black
           gradient2: {
-            stop1: { color: "#22C55E", opacity: 0.35 }, // emerald-500
-            stop2: { color: "#16A34A", opacity: 0.25 }, // emerald-600
-            stop3: { color: "#064E3B", opacity: 0.18 }, // emerald-900
+            stop1: { color: "#22C55E", opacity: 0.35 },
+            stop2: { color: "#16A34A", opacity: 0.25 },
+            stop3: { color: "#064E3B", opacity: 0.18 },
           },
         };
       default:
@@ -59,9 +70,14 @@ const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundPr
   const grad1Id = `waveGradient1-${variant}-${uid}`;
   const grad2Id = `waveGradient2-${variant}-${uid}`;
 
+  const animName = direction === "right" ? "moveRight" : "moveLeft";
+  const dur1 = `${Math.max(8, speed)}s`;
+  const dur2 = `${Math.max(12, Math.round(speed * 1.5))}s`;
+  const dur3 = `${Math.max(18, Math.round(speed * 2.25))}s`;
+  const parentTransform = `rotate(${tiltDeg}deg) scaleY(${amplitude}) translateY(${offsetY}px)`;
+
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Animated SVG Waves */}
       <div className="absolute top-0 left-0 w-full h-full">
         <svg
           viewBox="0 0 1200 800"
@@ -122,77 +138,114 @@ const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundPr
           </defs>
 
           {/* Layer 1 - Seamless horizontal scroll */}
-          <g className="will-change-transform" style={{ animation: "moveLeft 40s linear infinite" }}>
-            <path
-              d="M0,320 C300,260 900,380 1200,320 L1200,800 L0,800 Z"
-              fill={`url(#${grad1Id})`}
-            />
-            <g transform="translate(1200,0)">
+          <g
+            style={{
+              transform: parentTransform as any,
+              transformOrigin: "600px 400px",
+            }}
+          >
+            <g
+              className="will-change-transform"
+              style={{ animation: `${animName} ${dur1} linear infinite` }}
+            >
               <path
                 d="M0,320 C300,260 900,380 1200,320 L1200,800 L0,800 Z"
                 fill={`url(#${grad1Id})`}
               />
+              <g transform="translate(1200,0)">
+                <path
+                  d="M0,320 C300,260 900,380 1200,320 L1200,800 L0,800 Z"
+                  fill={`url(#${grad1Id})`}
+                />
+              </g>
             </g>
           </g>
 
           {/* Layer 2 - Slower parallax */}
-          <g className="will-change-transform" style={{ animation: "moveLeft 60s linear infinite", opacity: 0.85 }}>
-            <path
-              d="M0,420 C250,360 950,480 1200,420 L1200,800 L0,800 Z"
-              fill={`url(#${grad1Id})`}
-            />
-            <g transform="translate(1200,0)">
+          <g
+            style={{
+              transform: parentTransform as any,
+              transformOrigin: "600px 400px",
+            }}
+          >
+            <g
+              className="will-change-transform"
+              style={{
+                animation: `${animName} ${dur2} linear infinite`,
+                opacity: 0.85,
+              }}
+            >
               <path
                 d="M0,420 C250,360 950,480 1200,420 L1200,800 L0,800 Z"
                 fill={`url(#${grad1Id})`}
               />
+              <g transform="translate(1200,0)">
+                <path
+                  d="M0,420 C250,360 950,480 1200,420 L1200,800 L0,800 Z"
+                  fill={`url(#${grad1Id})`}
+                />
+              </g>
             </g>
           </g>
 
           {/* Layer 3 - Long wavelength, deepest */}
-          <g className="will-change-transform" style={{ animation: "moveLeft 90s linear infinite", opacity: 0.6 }}>
-            <path
-              d="M0,560 C400,520 800,600 1200,560 L1200,800 L0,800 Z"
-              fill={`url(#${grad2Id})`}
-            />
-            <g transform="translate(1200,0)">
+          <g
+            style={{
+              transform: parentTransform as any,
+              transformOrigin: "600px 400px",
+            }}
+          >
+            <g
+              className="will-change-transform"
+              style={{
+                animation: `${animName} ${dur3} linear infinite`,
+                opacity: 0.6,
+              }}
+            >
               <path
                 d="M0,560 C400,520 800,600 1200,560 L1200,800 L0,800 Z"
                 fill={`url(#${grad2Id})`}
               />
+              <g transform="translate(1200,0)">
+                <path
+                  d="M0,560 C400,520 800,600 1200,560 L1200,800 L0,800 Z"
+                  fill={`url(#${grad2Id})`}
+                />
+              </g>
             </g>
           </g>
         </svg>
       </div>
 
-  {/* Additional flowing overlays for smoother effect */}
+      {/* Additional flowing overlays for smoother effect */}
       <div className="absolute inset-0">
         <div
-      className="absolute top-1/4 left-0 w-[150%] h-32 bg-gradient-to-r from-transparent via-white/7 to-transparent transform rotate-1"
+          className="absolute top-1/4 left-0 w-[150%] h-32 bg-gradient-to-r from-transparent via-white/7 to-transparent transform rotate-1"
           style={{
             animation: "wave-flow-1 18s ease-in-out infinite",
             borderRadius: "50% 50% 0 0",
           }}
-        ></div>
+        />
         <div
-      className="absolute top-1/2 right-0 w-[140%] h-24 bg-gradient-to-l from-transparent via-white/6 to-transparent transform -rotate-1"
+          className="absolute top-1/2 right-0 w-[140%] h-24 bg-gradient-to-l from-transparent via-white/6 to-transparent transform -rotate-1"
           style={{
             animation: "wave-flow-2 22s ease-in-out infinite",
             borderRadius: "0 0 50% 50%",
           }}
-        ></div>
+        />
         <div
-      className="absolute bottom-1/4 left-0 w-[160%] h-28 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent transform rotate-0.5"
+          className="absolute bottom-1/4 left-0 w-[160%] h-28 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent transform rotate-0.5"
           style={{
             animation: "wave-flow-3 26s ease-in-out infinite",
             borderRadius: "50%",
           }}
-        ></div>
+        />
       </div>
 
       <style jsx>{`
         @keyframes wave-flow-1 {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateX(-30%) rotate(1deg) scaleX(1);
           }
           33% {
@@ -202,18 +255,20 @@ const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundPr
             transform: translateX(30%) rotate(0.5deg) scaleX(0.9);
           }
         }
-        
+
         @keyframes wave-flow-2 {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateX(30%) rotate(-1deg) scaleY(1);
           }
           50% {
             transform: translateX(-30%) rotate(-1.5deg) scaleY(1.2);
           }
         }
-        
+
         @keyframes wave-flow-3 {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateX(-40%) rotate(0.5deg) scale(1);
           }
           25% {
@@ -225,8 +280,20 @@ const WaveBackground = ({ opacity = 0.3, variant = "default" }: WaveBackgroundPr
         }
 
         @keyframes moveLeft {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-1200px); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-1200px);
+          }
+        }
+        @keyframes moveRight {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(1200px);
+          }
         }
       `}</style>
     </div>

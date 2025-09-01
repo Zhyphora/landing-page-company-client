@@ -39,14 +39,37 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Scroll indicator - moved here between buttons and sponsors */}
+          {/* Horizontal scroll indicator with dotted lines */}
           <div className="text-center mb-16 z-20">
-            <p className="text-gray-400 text-sm mb-2">Scroll down</p>
-            <div className="w-6 h-10 border border-gray-400 rounded-full flex justify-center mx-auto">
-              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+            <div className="flex items-center justify-center gap-8 group max-w-2xl mx-auto">
+              {/* Scroll down text */}
+              <p className="text-gray-400 text-sm transition-all duration-300 group-hover:text-gray-300 flex-shrink-0">
+                Scroll down
+              </p>
+
+              {/* Left dotted line */}
+              <div className="relative overflow-hidden flex-1 max-w-32">
+                <div className="w-full h-0.5 border-t-2 border-dotted border-gray-400 transition-all duration-300 group-hover:-translate-x-full group-hover:opacity-0"></div>
+              </div>
+
+              {/* Mouse indicator */}
+              <div className="w-6 h-10 border border-gray-400 rounded-full flex justify-center transition-all duration-300 group-hover:border-gray-300 flex-shrink-0">
+                <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce transition-all duration-300 group-hover:bg-gray-300"></div>
+              </div>
+
+              {/* Right dotted line */}
+              <div className="relative overflow-hidden flex-1 max-w-32">
+                <div className="w-full h-0.5 border-t-2 border-dotted border-gray-400 transition-all duration-300 group-hover:translate-x-full group-hover:opacity-0"></div>
+              </div>
+
+              {/* To see projects text */}
+              <p className="text-gray-400 text-sm transition-all duration-300 group-hover:text-gray-300 flex-shrink-0">
+                to see projects
+              </p>
             </div>
-            <p className="text-gray-400 text-sm mt-2">to see projects</p>
           </div>
+
+          {/* Close main content wrappers */}
         </div>
       </div>
 
