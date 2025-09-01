@@ -7,12 +7,15 @@ import Project from "../components/Project";
 import Reviews from "../components/Reviews";
 import FAQ from "../components/FAQ";
 import CTA from "../components/CTA";
+import Example from "@/components/heroTesting";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-white">
       <Navbar />
+      <Example />
       <Hero />
+
       <Project />
       <Meet />
       <Process />
