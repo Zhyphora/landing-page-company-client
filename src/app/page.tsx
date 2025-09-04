@@ -11,7 +11,7 @@ import CTA from "../components/CTA";
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-white">
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <Project />
       <Meet />
