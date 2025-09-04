@@ -46,10 +46,7 @@ const Reviews = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
-      {/* Wave Background */}
-      <WaveBackground opacity={0.15} variant="dark" />
-
+    <section className="w-full py-20 px-8 bg-[#191919] text-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">

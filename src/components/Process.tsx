@@ -24,10 +24,7 @@ const Process = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
-      {/* Wave Background */}
-      <WaveBackground opacity={0.15} variant="dark" />
-
+    <section className="w-full py-20 px-8 bg-[#191919] text-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Large process image */}

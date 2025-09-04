@@ -34,9 +34,9 @@ const Meet = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
+    <section className="w-full py-20 px-8 bg-[#191919] text-white relative overflow-hidden">
       {/* Wave Background */}
-      <WaveBackground opacity={0.15} variant="dark" />
+      {/* <WaveBackground opacity={0.15} variant="dark" /> */}
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

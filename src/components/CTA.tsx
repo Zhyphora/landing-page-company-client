@@ -4,10 +4,7 @@ import WaveBackground from "./WaveBackground";
 
 const CTA = () => {
   return (
-    <section className="w-full py-20 px-8 bg-black text-white relative overflow-hidden">
-      {/* Wave Background */}
-      <WaveBackground opacity={0.15} variant="dark" />
-
+    <section className="w-full py-20 px-8 bg-[#191919] text-white relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Available for work badge */}
         <div className="inline-block bg-green-400 text-black px-4 py-2 rounded-full text-sm font-medium mb-8">
