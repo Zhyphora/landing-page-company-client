@@ -107,7 +107,7 @@ const Hero = () => {
 
       {/* Brand logos at bottom - moved up slightly and made into an auto horizontal scroller */}
       <div className="pb-10 z-10 -mt-0  mb-24">
-        <div className="relative overflow-hidden max-w-6xl mx-auto px-4 ">
+        <div className="relative overflow-hidden max-w-6xl mx-auto px-4  ">
           {/* Scrolling track: duplicate group for seamless loop */}
           <div
             className="auto-scroll-track flex items-center gap-6 opacity-70"

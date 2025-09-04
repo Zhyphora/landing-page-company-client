@@ -11,7 +11,9 @@ const Navbar = () => {
           <div className="bg-white rounded-sm"></div>
           <div className="bg-white rounded-sm"></div>
         </div>
-        <span className="font-semibold text-lg text-white">Portfolite</span>
+        <span className="font-semibold text-lg text-white">
+          KilauEmas Studio
+        </span>
       </div>
 
       {/* Navigation Menu */}
