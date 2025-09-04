@@ -1,19 +1,59 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import WaveBackground from "./WaveBackground";
 
 const Hero = () => {
+  // Memberikan tipe yang tepat untuk referensi video
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Memastikan video dapat diputar dengan lancar
+    const playVideo = async () => {
+      try {
+        if (videoRef.current) {
+          await videoRef.current.play();
+
+          // Menghilangkan kontrol dari video
+          videoRef.current.controls = false;
+        }
+      } catch (error) {
+        console.log("Autoplay prevented:", error);
+
+        // Fallback: Jika autoplay dicegah, setel ulang video
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0;
+        }
+      }
+    };
+
+    playVideo();
+  }, []);
+
   return (
     <section className="w-full bg-black text-white relative overflow-hidden min-h-screen flex flex-col">
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
+        preload="auto"
+      >
+        <source src="/bg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       {/* Top badge (slightly raised) */}
       <div className="absolute top-16 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="bg-gray-800 px-4 py-2 rounded-full text-sm font-medium">
+        <div className="bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
           • Crafting Unique Brand Identities
         </div>
       </div>
 
-      {/* Wave Background */}
-      <WaveBackground opacity={0.2} variant="default" />
+      {/* Wave Background with reduced opacity for layering effect */}
+      {/* <WaveBackground opacity={0.1} variant="default" /> */}
 
       {/* Main content (pulled a bit up) */}
       <div className="flex-1 flex items-center justify-center px-8 z-10 pt-32 md:pt-40">
