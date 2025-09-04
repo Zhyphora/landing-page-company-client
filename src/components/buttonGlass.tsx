@@ -11,7 +11,7 @@ Props) => {
   return (
     <div className="relative z-10 rounded-[999vw] bg-transparent pointer-events-none transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)]">
       <button
-        className="glass-button all-unset cursor-pointer relative tap-highlight-color-transparent pointer-events-auto z-30 bg-gradient-to-r from-[rgba(255,255,255,0.05)] via-[rgba(255,255,255,0.2)] to-[rgba(255,255,255,0.05)] rounded-[999vw] shadow-[inset_0_0.125em_0.125em_rgba(0,0,0,0.05),inset_0_-0.125em_0.125em_rgba(255,255,255,0.5),0_0.25em_0.125em_-0.125em_rgba(0,0,0,0.2),0_0_0.1em_0.25em_inset_rgba(255,255,255,0.2),0_0_0_0_rgba(255,255,255,1)] backdrop-blur-[clamp(1px,0.125em,4px)] transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)]"
+        className="glass-button all-unset cursor-pointer relative tap-highlight-color-transparent pointer-events-auto z-30 bg-gradient-to-r from-[rgba(255,255,255,0.0)] via-[rgba(255,255,255,0.0)] to-[rgba(255,255,255,0.00)] rounded-[999vw] shadow-[inset_0_0.125em_0.125em_rgba(0,0,0,0.05),inset_0_-0.125em_0.125em_rgba(255,255,255,0.5),0_0.25em_0.125em_-0.125em_rgba(0,0,0,0.2),0_0_0.1em_0.25em_inset_rgba(255,255,255,0.2),0_0_0_0_rgba(255,255,255,1)] backdrop-blur-[clamp(1px,0.125em,4px)] transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)]"
         // onClick={onClick}
       >
         <span className="relative block select-none font-medium text-base text-white antialiased text-shadow-[0em_0.25em_0.05em_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] px-6 py-3.5">

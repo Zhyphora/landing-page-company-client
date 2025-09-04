@@ -2,7 +2,7 @@ import { WavyBackground } from "@/components/ui/shadcn-io/wavy-background";
 import GlassmorphismButton from "./buttonGlass";
 const Example = () => (
   <WavyBackground
-    backgroundFill="black"
+    backgroundFill="#191919"
     // colors={["#ff6b6b", "#4ecdc4", "#45b7d1", "#96ceb4", "#feca57"]}
     colors={["#4b55636d", "#10b9816d", "#1F29376d"]}
     waveWidth={100}
