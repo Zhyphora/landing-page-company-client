@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import WaveBackground from "./WaveBackground";
+import GlassmorphismButton from "./buttonGlass";
 
 const Hero = () => {
   return (
@@ -34,6 +35,7 @@ const Hero = () => {
             <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition">
               Get Started Now
             </button>
+
             <button className="border border-white px-8 py-3 rounded-full text-white hover:bg-white hover:text-black transition font-medium">
               See Projects
             </button>

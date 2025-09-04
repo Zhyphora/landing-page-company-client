@@ -1,4 +1,5 @@
 import { WavyBackground } from "@/components/ui/shadcn-io/wavy-background";
+import GlassmorphismButton from "./buttonGlass";
 const Example = () => (
   <WavyBackground
     backgroundFill="black"
@@ -30,12 +31,14 @@ const Example = () => (
           your story through bold visuals and strategic design solutions.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition">
+          {/* <button className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition">
             Get Started Now
-          </button>
-          <button className="border border-white px-8 py-3 rounded-full text-white hover:bg-white hover:text-black transition font-medium">
+          </button> */}
+          <GlassmorphismButton text="Get Started Now" />
+          <GlassmorphismButton text="See Projects" />
+          {/* <button className="border border-white px-8 py-3 rounded-full text-white hover:bg-white hover:text-black transition font-medium">
             See Projects
-          </button>
+          </button> */}
         </div>
 
         {/* Scroll indicator - moved here between buttons and sponsors */}
