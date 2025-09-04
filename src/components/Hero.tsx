@@ -47,9 +47,20 @@ const Hero = () => {
 
       {/* Glassmorphism Top Badge */}
       <div className="absolute top-18 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="bg-white/10 backdrop-blur-lg border border-white/20 px-6 py-3 rounded-full text-sm font-medium text-white shadow-lg hover:bg-white/20 transition-all duration-300">
-          • Crafting Unique Brand Identities
+        <div className="bg-white/10 backdrop-blur-lg border border-white/20 px-6 py-3 rounded-full text-sm font-medium text-white shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
+          <span className="animate-blink">•</span> Crafting Unique Brand
+          Identities
         </div>
+        <style>{`
+          @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+          }
+          .animate-blink {
+        animation: blink 1s infinite;
+        display: inline-block;
+          }
+        `}</style>
       </div>
 
       {/* Main content (pulled a bit up) */}
@@ -73,29 +84,29 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Horizontal scroll indicator with balanced, shorter lines and fade-to-transparent on hover */}
-          <div className="text-center mb-16 z-20">
-            <div className="flex items-center justify-center gap-4 group max-w-2xl mx-auto">
-              <p className="text-gray-400 text-sm font-medium transition-all duration-300 group-hover:text-white/90 flex-shrink-0">
+          {/* Horizontal scroll indicator with improved responsiveness */}
+          <div className="text-center mb-10 z-20">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 group max-w-2xl mx-auto">
+              <p className="text-gray-400 text-xs sm:text-sm font-medium transition-all duration-300 group-hover:text-white/90 flex-shrink-0">
                 Scroll down
               </p>
 
-              {/* Left line (shorter for symmetry) */}
-              <div className="relative flex-shrink-0 w-20 md:w-24 lg:w-32">
+              {/* Left line */}
+              <div className="relative flex-shrink-0 w-14 sm:w-20 md:w-24 lg:w-32">
                 <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-gray-400 to-gray-400 rounded transition-all duration-500 ease-out opacity-100 group-hover:via-white group-hover:to-white"></div>
               </div>
 
               {/* Mouse indicator */}
-              <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center items-start transition-all duration-300 group-hover:border-white flex-shrink-0">
-                <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce transition-all duration-300 group-hover:bg-white"></div>
+              <div className="w-5 sm:w-6 h-8 sm:h-10 border-2 border-gray-400 rounded-full flex justify-center items-start transition-all duration-300 group-hover:border-white flex-shrink-0">
+                <div className="w-1 h-2.5 sm:h-3 bg-gray-400 rounded-full mt-2 animate-bounce transition-all duration-300 group-hover:bg-white"></div>
               </div>
 
-              {/* Right line (same shorter width) */}
-              <div className="relative flex-shrink-0 w-20 md:w-24 lg:w-32">
+              {/* Right line */}
+              <div className="relative flex-shrink-0 w-14 sm:w-20 md:w-24 lg:w-32">
                 <div className="w-full h-[2px] bg-gradient-to-r from-gray-400 to-transparent via-gray-400 rounded transition-all duration-500 ease-out opacity-100 group-hover:from-white group-hover:via-white"></div>
               </div>
 
-              <p className="text-gray-400 text-sm transition-colors duration-300 group-hover:text-gray-300 flex-shrink-0 ml-2">
+              <p className="text-gray-400 text-xs sm:text-sm transition-colors duration-300 group-hover:text-gray-300 flex-shrink-0 ml-1 sm:ml-2">
                 to see projects
               </p>
             </div>
