@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import GlassmorphismButton from "./glassButton";
+import { motion } from "motion/react";
 
 const Hero = () => {
   // Memberikan tipe yang tepat untuk referensi video
@@ -49,11 +50,28 @@ const Hero = () => {
       <div className=" absolute inset-0 z-10 pt-18 lg:pt-52 w-full h-full flex flex-col justify-start items-center">
         {/* Glassmorphism Top Badge */}
         <div className="">
-          <div className=" w-full  bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium text-white shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-nowrap">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              backgroundColor: { duration: 0.3, ease: "easeInOut" },
+            }}
+            // style={{ backgroundColor: "rgba(255,255,255,0.10)" }} // <- origin color
+            whileHover={{
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
+              // transition: {
+              //   backgroundColor: { duration: 0.1, ease: "easeInOut" },
+              // },
+            }}
+            // className=" w-full  bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium text-white shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-nowrap"
+            className=" w-full  backdrop-blur-lg border border-white/20 px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium text-white shadow-lg flex items-center gap-2 text-nowrap"
+          >
             {/* <span className="animate-blink">•</span> Crafting Unique Brands */}
             <span className=" w-2 h-2 rounded-full  animate-pulse bg-green-400"></span>{" "}
             Crafting Unique Brands Identities
-          </div>
+          </motion.div>
           <style>{`
           @keyframes blink {
         0%, 100% { opacity: 1; }
@@ -69,18 +87,33 @@ const Hero = () => {
         {/* Main content (pulled a bit up) */}
         <div className=" flex items-center justify-center px-8 h-full z-10 pt-4 ">
           <div className="max-w-6xl w-full text-center  h-full px-8">
-            <h1 className="flex flex-col gap-0 md:gap-4 text-[40px] sm:text-6xl md:text-7xl lg:text-8xl/30 font-medium mb-4 md:mb-8 leading-[0.9] tracking-tight">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+              className="flex flex-col gap-0 md:gap-4 text-[40px] sm:text-6xl md:text-7xl lg:text-8xl/30 font-medium mb-4 md:mb-8 leading-[0.9] tracking-tight"
+            >
               {/* <div className="text-white text-nowrap ">Merajut Identitas,</div> */}
               {/* <br /> */}
               {/* <div className="text-white text-pretty">Menyala</div> */}
               Merajut Identitas, <br /> Menyala
-            </h1>
-            <p className="text-sm sm:text-lg mb-6 md:mb-12 text-gray-300/90 max-w-2xl mx-auto font-regular text-pretty">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+              className="text-sm sm:text-lg mb-6 md:mb-12 text-gray-300/90 max-w-2xl mx-auto font-regular text-pretty"
+            >
               Elevate your brand with custom identity and package design.
               Showcase your story through bold visuals and strategic design
               solutions.
-            </p>
-            <div className="flex gap-3 md:gap-6 justify-center items-center mb-16 *:text-nowrap">
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+              className="flex gap-3 md:gap-6 justify-center items-center mb-16 *:text-nowrap"
+            >
               {/* <button className=" text-sm md:text-lg bg-white text-black px-4 py-2 md:px-8 md:py-3.5 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Get Started Now
               </button> */}
@@ -89,10 +122,15 @@ const Hero = () => {
               {/* <button className=" text-sm md:text-lg border-2 border-white/80 px-4 py-2 md:px-8 md:py-3.5 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 font-medium transform hover:scale-105">
                 See Projects
               </button> */}
-            </div>
+            </motion.div>
 
             {/* Horizontal scroll indicator with improved responsiveness */}
-            <div className="text-center mb-0 z-20 ">
+            <motion.div
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2, ease: "easeOut", delay: 1.5 }}
+              className="text-center mb-0 z-20 "
+            >
               <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 group max-w-2xl mx-auto">
                 <p className="text-gray-400 text-xs sm:text-sm font-medium transition-all duration-300 group-hover:text-white/90 flex-shrink-0">
                   Scroll down
@@ -117,7 +155,7 @@ const Hero = () => {
                   to see projects
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Close main content wrappers */}
           </div>

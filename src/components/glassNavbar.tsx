@@ -57,7 +57,7 @@ export default function GlassNavbar() {
       {/* idle */}
       <div
         className={cn(
-          "absolute inset-0 w-full h-fit mx-auto p-4 transition-all duration-700 ease-in-out text-white mt-4",
+          "absolute inset-0 w-full max-w-7xl h-fit mx-auto p-4 transition-all duration-700 ease-in-out text-white mt-4",
           scrolled && "opacity-0",
           hiddenIdle && "hidden"
         )}
@@ -98,7 +98,7 @@ export default function GlassNavbar() {
       {/* scrolled with glassMorphism effect*/}
       <div
         className={cn(
-          "absolute inset-0 w-full h-fit mx-auto p-4 transition-all duration-700 ease-in-out text-white text-shadow-sm text-shadow-black/60 mt-4",
+          "absolute inset-0 w-full max-w-7xl h-fit mx-auto p-4 transition-all duration-700 ease-in-out text-white text-shadow-sm text-shadow-black/60 mt-4",
           hiddenScrolled && "hidden",
           scrolled
             ? "bg-white/15 backdrop-blur-xl border-white/30 border w-[95%] rounded-full shadow-[inset_0px_0px_11px_5px_rgba(255,255,255,0.35)]"
