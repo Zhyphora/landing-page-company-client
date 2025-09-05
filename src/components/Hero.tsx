@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import WaveBackground from "./WaveBackground";
+import GlassmorphismButton from "./glassButton";
 
 const Hero = () => {
   // Memberikan tipe yang tepat untuk referensi video
@@ -46,7 +46,7 @@ const Hero = () => {
       </video>
 
       {/* overlay container */}
-      <div className=" absolute inset-0 z-10 pt-18 lg:pt-24 w-full h-full flex flex-col justify-between items-center">
+      <div className=" absolute inset-0 z-10 pt-18 lg:pt-52 w-full h-full flex flex-col justify-start items-center">
         {/* Glassmorphism Top Badge */}
         <div className="">
           <div className=" w-full  bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium text-white shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-nowrap">
@@ -69,10 +69,11 @@ const Hero = () => {
         {/* Main content (pulled a bit up) */}
         <div className=" flex items-center justify-center px-8 h-full z-10 pt-4 ">
           <div className="max-w-6xl w-full text-center  h-full px-8">
-            <h1 className="flex flex-col gap-0 md:gap-4 text-[40px] sm:text-6xl md:text-7xl lg:text-8xl font-medium mb-4 md:mb-8 leading-[0.9] tracking-tight">
-              <div className="text-white text-nowrap ">Merajut Identitas,</div>
+            <h1 className="flex flex-col gap-0 md:gap-4 text-[40px] sm:text-6xl md:text-7xl lg:text-8xl/30 font-medium mb-4 md:mb-8 leading-[0.9] tracking-tight">
+              {/* <div className="text-white text-nowrap ">Merajut Identitas,</div> */}
               {/* <br /> */}
-              <div className="text-white text-pretty">Menyala</div>
+              {/* <div className="text-white text-pretty">Menyala</div> */}
+              Merajut Identitas, <br /> Menyala
             </h1>
             <p className="text-sm sm:text-lg mb-6 md:mb-12 text-gray-300/90 max-w-2xl mx-auto font-regular text-pretty">
               Elevate your brand with custom identity and package design.
@@ -80,12 +81,14 @@ const Hero = () => {
               solutions.
             </p>
             <div className="flex gap-3 md:gap-6 justify-center items-center mb-16 *:text-nowrap">
-              <button className=" text-sm md:text-lg bg-white text-black px-4 py-2 md:px-8 md:py-3.5 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              {/* <button className=" text-sm md:text-lg bg-white text-black px-4 py-2 md:px-8 md:py-3.5 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Get Started Now
-              </button>
-              <button className=" text-sm md:text-lg border-2 border-white/80 px-4 py-2 md:px-8 md:py-3.5 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 font-medium transform hover:scale-105">
+              </button> */}
+              <GlassmorphismButton text="Get Started Now" />
+              <GlassmorphismButton text="See Projects" />
+              {/* <button className=" text-sm md:text-lg border-2 border-white/80 px-4 py-2 md:px-8 md:py-3.5 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 font-medium transform hover:scale-105">
                 See Projects
-              </button>
+              </button> */}
             </div>
 
             {/* Horizontal scroll indicator with improved responsiveness */}
