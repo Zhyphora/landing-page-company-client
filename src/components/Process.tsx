@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import WaveBackground from "./WaveBackground";
+import { motion } from "motion/react";
 
 const Process = () => {
   const steps = [
@@ -28,7 +29,17 @@ const Process = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left side - Large process image */}
-          <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut",
+              delay: 0.2,
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="relative"
+          >
             <div className="w-full h-[600px] bg-gray-800 rounded-2xl overflow-hidden">
               {/* Simulating hands/workspace image from screenshot */}
               <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 relative flex items-center justify-center">
@@ -44,22 +55,45 @@ const Process = () => {
                 <div className="absolute center w-8 h-8 bg-gray-400 rounded-full"></div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right side - Process content */}
           <div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
-              Process
-            </h2>
-            <p className="text-lg text-gray-300 mb-12">
-              crafting bold visuals that inspire and elevate brands with thought
-              process.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.3,
+                ease: "easeOut",
+                delay: 0.2,
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+              className=""
+            >
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
+                Process
+              </h2>
+              <p className="text-lg text-gray-300 mb-12">
+                crafting bold visuals that inspire and elevate brands with
+                thought process.
+              </p>
+            </motion.div>
 
             {/* Process Steps */}
             <div className="space-y-8">
               {steps.map((step, index) => (
-                <div key={index} className="flex gap-6">
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut",
+                    delay: index * 0.2,
+                  }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  key={index}
+                  className="flex gap-6"
+                >
                   {/* Step Number */}
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center text-lg font-bold">
@@ -76,7 +110,7 @@ const Process = () => {
                       {step.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 

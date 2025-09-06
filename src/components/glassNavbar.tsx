@@ -26,24 +26,15 @@ export default function GlassNavbar() {
 
   useEffect(() => {
     if (scrolled) {
-      // 1) unhide dulu supaya element ada di DOM (display:block)
       setHiddenScrolled(false);
-      // 2) tunggu 1 frame → baru set opacity jadi 1 (fade-in)
       requestAnimationFrame(() => setGlassVisible(true));
-
-      // idle variant fade-out lalu disembunyikan
       setHiddenIdle(false);
       const t = setTimeout(() => setHiddenIdle(true), 500);
       return () => clearTimeout(t);
     } else {
-      // glass variant fade-out dulu
       setGlassVisible(false);
-      // setelah selesai transisi → baru hidden (display:none)
       const s = setTimeout(() => setHiddenScrolled(true), 500);
       const i = setTimeout(() => setHiddenIdle(false), 200);
-      // idle variant tampil lagi
-      //   requestAnimationFrame(() => setHiddenIdle(false));
-      //   setHiddenIdle(false);
 
       return () => {
         clearTimeout(s);
@@ -54,7 +45,6 @@ export default function GlassNavbar() {
 
   return (
     <div className="fixed top-0 w-full z-50">
-      {/* idle */}
       <div
         className={cn(
           "absolute inset-0 w-full max-w-7xl h-fit mx-auto p-4 transition-all duration-700 ease-in-out text-white mt-4",
@@ -63,7 +53,6 @@ export default function GlassNavbar() {
         )}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* <div className="text-xl font-bold">Logo</div> */}
           <Image
             src="/kes-logo-horizontal-crop-removebg.png"
             alt="Logo"
@@ -95,21 +84,17 @@ export default function GlassNavbar() {
         </div>
       </div>
 
-      {/* scrolled with glassMorphism effect*/}
       <div
         className={cn(
           "absolute inset-0 w-full max-w-7xl h-fit mx-auto p-4 transition-all duration-700 ease-in-out text-white text-shadow-sm text-shadow-black/60 mt-4",
           hiddenScrolled && "hidden",
           scrolled
-            ? "bg-white/15 backdrop-blur-xl border-white/30 border w-[95%] rounded-full shadow-[inset_0px_0px_11px_5px_rgba(255,255,255,0.35)]"
-            : // ? "bg-white/20 backdrop-blur-xl border-white/30 border w-[95%] rounded-full shadow-[inset_0px_39px_56px_-36px_rgba(255,255,255,0.5),inset_0px_7px_11px_-4px_rgba(255,255,255,0.25),inset_0px_-82px_68px_-64px_rgba(96,68,144,0.3),inset_0px_98px_100px_-48px_rgba(202,172,255,0.3),inset_0px_4px_18px_0px_rgba(154,146,210,0.3),inset_0px_4px_18px_0px_,inset_0px_1px_40px_0px_rgba(227,222,255,0.2)]"
-              // ? "bg-white/20 backdrop-blur-xl border-white/30 border inset-shadow-sm inset-shadow-white/30  w-[95%] rounded-full"
-              " bg-transparent",
+            ? "bg-white/20 backdrop-blur-xl border-white/60 border w-[95%] rounded-full shadow-[inset_0px_0px_11px_5px_rgba(255,255,255,0.25),inset_0px_0px_11px_15px_rgba(255,255,255,0.05)]"
+            : " bg-transparent",
           glassVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* <div className="text-xl font-bold">Logo</div> */}
           <Image
             src="/kes-logo-horizontal-crop-removebg.png"
             alt="Logo"
