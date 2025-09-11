@@ -59,7 +59,7 @@ const Project = () => {
   ];
 
   return (
-    <section className="w-full py-20 px-8 bg-[#191919] text-white relative overflow-hidden">
+    <section className="w-full py-20 px-8  text-white relative overflow-hidden">
       {" "}
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Projects Grid - 3x3 layout */}
@@ -75,7 +75,7 @@ const Project = () => {
                   opacity: 1,
                   y: 0,
                 }}
-                viewport={{ once: false, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.5 }}
                 transition={{
                   duration: 0.6,
                   ease: "easeOut",

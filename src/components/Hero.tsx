@@ -31,9 +31,9 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="w-full bg-black text-white overflow-hidden h-[100vh] relative">
+    <section className="w-full text-white overflow-hidden h-[100vh] relative">
       {/* Video Background */}
-      <video
+      {/* <video
         ref={videoRef}
         autoPlay
         loop
@@ -44,7 +44,7 @@ const Hero = () => {
       >
         <source src="/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
 
       {/* overlay container */}
       <div className=" absolute inset-0 z-10 pt-18 lg:pt-52 w-full h-full flex flex-col justify-start items-center">
@@ -162,7 +162,7 @@ const Hero = () => {
         </div>
 
         {/* Brand logos at bottom - moved up slightly and made into an auto horizontal scroller */}
-        <div className="pb-10 z-10 mb-0">
+        <div className="pb-10 z-11 mb-0">
           <div className="relative overflow-hidden max-w-6xl mx-auto px-4 ">
             {/* Scrolling track: duplicate group for seamless loop */}
             <div
@@ -214,8 +214,6 @@ const Hero = () => {
             {/* soft left/right fades so icons appear to enter/exit */}
             {/* <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-transparent to-transparent" /> */}
             {/* <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-transparent to-transparent" />    */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-background via-background/20 to-transparent backdrop-blur-lg" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-background via-background/20 to-transparent backdrop-blur-sm" />
           </div>
 
           {/* Inline styles for the auto-scroll animation */}
