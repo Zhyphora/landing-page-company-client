@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import WaveBackground from "./WaveBackground";
+import { motion } from "motion/react";
 
 const Meet = () => {
   const skills = [
@@ -41,14 +42,19 @@ const Meet = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left side - Text content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
               Meet Meily
             </h2>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-              I'm Meily, a passionate Brand Identity & Package Designer based in
-              tokyo. I specialize in crafting bold visual identities and
-              packaging that captivate and inspire, blending creativity with
+              I&apos;m Meily, a passionate Brand Identity & Package Designer
+              based in tokyo. I specialize in crafting bold visual identities
+              and packaging that captivate and inspire, blending creativity with
               strategy to elevate brands.
             </p>
 
@@ -81,10 +87,16 @@ const Meet = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right side - Image */}
-          <div className="flex justify-center lg:justify-end">
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
+            viewport={{ once: true, amount: 0.5 }}
+            className="flex justify-center lg:justify-end"
+          >
             <div className="relative">
               <div className="w-80 h-96 bg-gray-700 rounded-2xl overflow-hidden">
                 {/* Placeholder for profile image - simulating the reference */}
@@ -97,11 +109,17 @@ const Meet = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Additional project grid at bottom */}
-        <div className="mt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-20"
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((item, index) => (
               <div
@@ -114,7 +132,7 @@ const Meet = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
