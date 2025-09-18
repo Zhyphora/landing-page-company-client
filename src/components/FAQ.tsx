@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import WaveBackground from "./WaveBackground";
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);

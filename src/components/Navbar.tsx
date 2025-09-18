@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
@@ -8,17 +10,19 @@ const Navbar = () => {
 
       {/* Logo */}
       <div className="flex items-center relative z-10 pb-4">
-        <a href="/" className="flex items-center group">
+        <Link href="/" className="flex items-center group">
           <div className="h-14 relative overflow-hidden">
             {/* <div className="h-14 sm:h-15 md:h-16 relative overflow-hidden"> */}
-            <img
+            <Image
+              width={300}
+              height={300}
               src="/kes-logo-horizontal-crop-removebg.png"
               alt="KilauEmas Studio"
               className="h-full w-auto  transition-transform duration-300 group-hover:scale-105 "
             />
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-500" />
           </div>
-        </a>
+        </Link>
       </div>
 
       {/* Navigation Menu */}

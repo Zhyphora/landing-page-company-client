@@ -1,5 +1,4 @@
 import React from "react";
-import WaveBackground from "./WaveBackground";
 
 const Services = () => {
   const services = [
