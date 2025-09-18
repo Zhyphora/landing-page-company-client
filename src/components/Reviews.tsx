@@ -1,6 +1,5 @@
 import React from "react";
 import { FaStar } from "react-icons/fa6";
-import WaveBackground from "./WaveBackground";
 
 const Reviews = () => {
   const reviews = [
@@ -97,7 +96,7 @@ const Reviews = () => {
               </div>
 
               <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                "{review.review}"
+                {review.review}
               </p>
 
               <div className="flex items-center">

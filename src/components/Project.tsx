@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "motion/react";
 import React from "react";
-import { SiTrueup } from "react-icons/si";
 
 const Project = () => {
   const projects = [
