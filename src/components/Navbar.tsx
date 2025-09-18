@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -8,7 +9,7 @@ const Navbar = () => {
 
       {/* Logo */}
       <div className="flex items-center relative z-10 pb-4">
-        <a href="/" className="flex items-center group">
+        <Link href="/" className="flex items-center group">
           <div className="h-14 relative overflow-hidden">
             {/* <div className="h-14 sm:h-15 md:h-16 relative overflow-hidden"> */}
             <img
@@ -18,7 +19,7 @@ const Navbar = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-500" />
           </div>
-        </a>
+        </Link>
       </div>
 
       {/* Navigation Menu */}

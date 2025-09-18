@@ -1,6 +1,5 @@
 import React from "react";
 import { FaBehance, FaTwitter, FaDribbble } from "react-icons/fa6";
-import WaveBackground from "./WaveBackground";
 
 const CTA = () => {
   return (
@@ -13,7 +12,7 @@ const CTA = () => {
 
         {/* Main heading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 leading-tight">
-          Curious about what we can create together? Let's bring something
+          Curious about what we can create together? Let&apos;s bring something
           extraordinary to life!
         </h2>
 
