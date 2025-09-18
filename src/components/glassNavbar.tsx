@@ -140,6 +140,7 @@ export default function GlassNavbar() {
   const [hiddenIdle, setHiddenIdle] = useState(false);
   const [hiddenScrolled, setHiddenScrolled] = useState(false);
   const [glassVisible, setGlassVisible] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -194,7 +195,8 @@ export default function GlassNavbar() {
             "
           />
 
-          <div className="flex space-x-8">
+          {/* Desktop links */}
+          <div className="hidden lg:flex space-x-8">
             <a href="#" className="hover:text-white/80 transition-colors">
               Home
             </a>
@@ -208,9 +210,23 @@ export default function GlassNavbar() {
               Contact
             </a>
           </div>
-          <div>
-            <button className="bg-white hover:bg-white/30 backdrop-blur-md px-6 py-2 rounded-full transition-all duration-300 border text-black border-white/30">
-              Get Started
+
+          <div className="flex items-center gap-3">
+            <div className="hidden lg:block">
+              <button className="bg-white hover:bg-white/30 backdrop-blur-md px-6 py-2 rounded-full transition-all duration-300 border text-black border-white/30">
+                Get Started
+              </button>
+            </div>
+
+            {/* Mobile hamburger (right side) */}
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setMobileOpen((s) => !s)}
+              className="lg:hidden p-2 rounded-md hover:bg-white/10 transition-colors"
+            >
+              <div className="w-6 h-0.5 bg-white mb-1" />
+              <div className="w-6 h-0.5 bg-white mb-1" />
+              <div className="w-6 h-0.5 bg-white" />
             </button>
           </div>
         </div>
@@ -235,7 +251,8 @@ export default function GlassNavbar() {
             className="h-10 w-auto
             "
           />
-          <div className="flex space-x-8">
+          {/* Desktop links */}
+          <div className="hidden lg:flex space-x-8">
             <a href="#" className="hover:text-white/80 transition-colors">
               Home
             </a>
@@ -249,12 +266,100 @@ export default function GlassNavbar() {
               Contact
             </a>
           </div>
-          <div>
-            <button className="bg-white hover:bg-white/30 backdrop-blur-md px-6 py-2 rounded-full transition-all duration-300 border text-black border-white/30">
-              Get Started
+
+          <div className="flex items-center gap-3">
+            <div className="hidden lg:block">
+              <button className="bg-white hover:bg-white/30 backdrop-blur-md px-6 py-2 rounded-full transition-all duration-300 border text-black border-white/30">
+                Get Started
+              </button>
+            </div>
+
+            {/* Mobile hamburger (right side) */}
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setMobileOpen((s) => !s)}
+              className="lg:hidden p-2 rounded-md hover:bg-white/10 transition-colors"
+            >
+              <div className="w-6 h-0.5 bg-white mb-1" />
+              <div className="w-6 h-0.5 bg-white mb-1" />
+              <div className="w-6 h-0.5 bg-white" />
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Mobile menu: right-side drawer with backdrop */}
+      <div
+        className={`fixed inset-0 z-40 lg:hidden ${
+          mobileOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${
+            mobileOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileOpen(false)}
+        />
+
+        {/* Drawer */}
+        <aside
+          className={`fixed top-0 right-0 h-full w-72 bg-[#0f1724] rounded-l-xl p-6 text-white transform transition-transform duration-300 ${
+            mobileOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center justify-between mb-6">
+            <div className="text-lg font-bold">Menu</div>
+            <button
+              aria-label="Close menu"
+              onClick={() => setMobileOpen(false)}
+              className="p-2"
+            >
+              ✕
+            </button>
+          </div>
+
+          <nav className="flex flex-col gap-4">
+            <a
+              href="#"
+              onClick={() => setMobileOpen(false)}
+              className="text-lg font-medium hover:text-white/80"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              onClick={() => setMobileOpen(false)}
+              className="text-lg font-medium hover:text-white/80"
+            >
+              About
+            </a>
+            <a
+              href="#services"
+              onClick={() => setMobileOpen(false)}
+              className="text-lg font-medium hover:text-white/80"
+            >
+              Services
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="text-lg font-medium hover:text-white/80"
+            >
+              Contact
+            </a>
+
+            <div className="pt-6">
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="w-full bg-white text-black px-6 py-2 rounded-full transition"
+              >
+                Get Started
+              </button>
+            </div>
+          </nav>
+        </aside>
       </div>
     </div>
   );

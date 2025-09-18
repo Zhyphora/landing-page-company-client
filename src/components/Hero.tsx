@@ -31,7 +31,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="w-full text-white overflow-hidden h-[100vh] relative">
+    <section className="w-full text-white overflow-hidden min-h-screen relative">
       {/* Video Background */}
       {/* <video
         ref={videoRef}
@@ -47,7 +47,7 @@ const Hero = () => {
       </video> */}
 
       {/* overlay container */}
-      <div className=" absolute inset-0 z-10 pt-18 lg:pt-52 w-full h-full flex flex-col justify-start items-center">
+      <div className=" absolute inset-0 z-10 pt-36 lg:pt-52 w-full h-full flex flex-col justify-start items-center">
         {/* Glassmorphism Top Badge */}
         <div className="">
           <motion.div
@@ -91,7 +91,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-              className="flex flex-col gap-0 md:gap-4 text-[40px] sm:text-6xl md:text-7xl lg:text-8xl/30 font-medium mb-4 md:mb-8 leading-[0.9] tracking-tight"
+              className="flex flex-col gap-0 md:gap-4 text-6xl sm:text-7xl md:text-8xl lg:text-[5.5rem] font-medium mb-4 md:mb-8 leading-tight tracking-tight"
             >
               {/* <div className="text-white text-nowrap ">Merajut Identitas,</div> */}
               {/* <br /> */}
@@ -102,7 +102,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-              className="text-sm sm:text-lg mb-6 md:mb-12 text-gray-300/90 max-w-2xl mx-auto font-regular text-pretty"
+              className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-12 text-gray-300/90 max-w-2xl mx-auto font-regular text-pretty"
             >
               Elevate your brand with custom identity and package design.
               Showcase your story through bold visuals and strategic design
@@ -112,7 +112,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-              className="flex gap-3 md:gap-6 justify-center items-center mb-16 *:text-nowrap"
+              className="flex flex-col sm:flex-row gap-3 md:gap-6 justify-center items-center mb-12 sm:mb-16 *:text-nowrap"
             >
               {/* <button className=" text-sm md:text-lg bg-white text-black px-4 py-2 md:px-8 md:py-3.5 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Get Started Now
@@ -129,7 +129,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 2, ease: "easeOut", delay: 1.5 }}
-              className="text-center mb-0 z-20 "
+              className="text-center mb-0 z-20 hidden md:block"
             >
               <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 group max-w-2xl mx-auto">
                 <p className="text-gray-400 text-xs sm:text-sm font-medium transition-all duration-300 group-hover:text-white/90 flex-shrink-0">
