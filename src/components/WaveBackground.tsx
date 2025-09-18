@@ -76,6 +76,10 @@ const WaveBackground = ({
   const dur2 = `${Math.max(12, Math.round(speed * 1.5))}s`;
   const dur3 = `${Math.max(18, Math.round(speed * 2.25))}s`;
   const parentTransform = `rotate(${tiltDeg}deg) scaleY(${amplitude}) translateY(${offsetY}px)`;
+  const parentStyle: React.CSSProperties = {
+    transform: parentTransform,
+    transformOrigin: "600px 400px",
+  };
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -139,12 +143,7 @@ const WaveBackground = ({
           </defs>
 
           {/* Layer 1 - Seamless horizontal scroll */}
-          <g
-            style={{
-              transform: parentTransform as any,
-              transformOrigin: "600px 400px",
-            }}
-          >
+          <g style={parentStyle}>
             <g
               className="will-change-transform"
               style={{ animation: `${animName} ${dur1} linear infinite` }}
@@ -163,12 +162,7 @@ const WaveBackground = ({
           </g>
 
           {/* Layer 2 - Slower parallax */}
-          <g
-            style={{
-              transform: parentTransform as any,
-              transformOrigin: "600px 400px",
-            }}
-          >
+          <g style={parentStyle}>
             <g
               className="will-change-transform"
               style={{
@@ -190,12 +184,7 @@ const WaveBackground = ({
           </g>
 
           {/* Layer 3 - Long wavelength, deepest */}
-          <g
-            style={{
-              transform: parentTransform as any,
-              transformOrigin: "600px 400px",
-            }}
-          >
+          <g style={parentStyle}>
             <g
               className="will-change-transform"
               style={{

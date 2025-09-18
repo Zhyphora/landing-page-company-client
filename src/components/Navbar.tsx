@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -18,7 +20,8 @@ const Navbar = () => {
               height={300}
               src="/kes-logo-horizontal-crop-removebg.png"
               alt="KilauEmas Studio"
-              className="h-full w-auto  transition-transform duration-300 group-hover:scale-105 "
+              fill
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-500" />
           </div>
